@@ -1,16 +1,16 @@
 param($eventGridEvent, $TriggerMetadata)
 
 # By a key rotation we mean creating a new version of the key
-function RoatateKey($vaultName, $keyName) {
+function RotateKey($vaultName, $keyName) {
     # Retrieve Key
     $key = Get-AzKeyVaultKey -VaultName $vaultName -Name $keyName
     $version = $key.Version.ToString()
-    Write-Host "Key Retrieved. Version: $version"
+    Write-Host "Key retrieved. Version: $version"
 
     $validityPeriodDays = $key.Tags["ValidityPeriodDays"]
     
-    Write-Host "Key Info Retrieved"
-    Write-Host "Validity Period: $validityPeriodDays"
+    Write-Host "Key info retrieved"
+    Write-Host "Validity period: $validityPeriodDays"
 
     # Add a new key to Key Vault
     $newKeyVersionTags = @{}
@@ -30,10 +30,10 @@ $eventGridEvent | ConvertTo-Json | Write-Host
 
 $keyName = $eventGridEvent.subject
 $vaultName = $eventGridEvent.data.VaultName
-Write-Host "Key Vault Name: $vaultName"
-Write-Host "Key Name: $keyName"
+Write-Host "Key vault name: $vaultName"
+Write-Host "Key name: $keyName"
 
 # Rotate key
-Write-Host "Rotation started."
-RoatateKey $vaultName $keyName
-Write-Host "Key Rotated Successfully"
+Write-Host "Rotation started"
+RotateKey $vaultName $keyName
+Write-Host "Key rotated successfully"
