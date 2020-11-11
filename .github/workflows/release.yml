@@ -20,7 +20,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Archive Release
-        uses: thedoctor0/zip-release@master
+        run: zip -r release.zip . -x ".git*" ".vscode"
+      - uses: actions/upload-artifact@v2
         with:
-          filename: 'release.zip'
-          exclusions: '.git* .vscode'
+          path: release.zip
