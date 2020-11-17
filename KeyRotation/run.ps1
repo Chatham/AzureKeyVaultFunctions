@@ -13,9 +13,7 @@ function RotateKey($vaultName, $keyName) {
     Write-Host "Validity period: $validityPeriodDays"
 
     # Add a new key to Key Vault
-    $newKeyVersionTags = @{}
-    $newKeyVersionTags.ValidityPeriodDays = $validityPeriodDays
-
+    $newKeyVersionTags = $key.Tags
     $expiryDate = (Get-Date).AddDays([int] $validityPeriodDays).ToUniversalTime()
     $newKey = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Tag $newKeyVersionTags -Expires $expiryDate -Destination Software
     $newVersion = $newKey.Version.ToString()
