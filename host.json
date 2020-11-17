@@ -7,9 +7,11 @@
     },
     "applicationInsights": {
       "samplingSettings": {
-        "isEnabled": true,
-        "excludedTypes": "Request;Exception"
+        "isEnabled": false
       }
+    },
+    "console": {
+      "isEnabled": true
     }
   },
   "extensionBundle": {
