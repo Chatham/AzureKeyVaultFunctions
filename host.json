@@ -7,8 +7,7 @@
     },
     "applicationInsights": {
       "samplingSettings": {
-        "isEnabled": true,
-        "includedTypes": "Event"
+        "isEnabled": false
       },
       "enableLiveMetrics": false,
       "enableDependencyTracking": false,
