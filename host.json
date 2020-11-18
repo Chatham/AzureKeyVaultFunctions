@@ -14,7 +14,7 @@
       "enableDependencyTracking": false,
       "enablePerformanceCountersCollection": false,            
       "snapshotConfiguration": {
-        "isEnabled": true
+        "isEnabled": false
       }
     },
     "console": {
